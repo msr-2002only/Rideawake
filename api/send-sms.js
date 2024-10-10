@@ -1,15 +1,4 @@
-const express = require('express');
 const axios = require('axios');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-
-const app = express();
-
-// Enable CORS
-app.use(cors());
-
-// Body parser to handle JSON requests
-app.use(bodyParser.json());
 
 // Infobip API details
 const infobipConfig = {
@@ -21,8 +10,12 @@ const infobipConfig = {
   }
 };
 
-// SMS sending endpoint
-app.post('/api/send-sms', async (req, res) => {
+// Exported handler for Vercel serverless function
+module.exports = async (req, res) => {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method not allowed' }); // Only allow POST
+  }
+
   const { to, message } = req.body;
 
   if (!to || !message) {
@@ -56,6 +49,4 @@ app.post('/api/send-sms', async (req, res) => {
       details: error.response ? error.response.data : error.message
     });
   }
-});
-
-module.exports = app;
+};
