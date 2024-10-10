@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
-const port = 3001;
 
 // Enable CORS
 app.use(cors());
@@ -16,7 +15,7 @@ app.use(bodyParser.json());
 const infobipConfig = {
   url: 'https://lq3drr.api.infobip.com//sms/2/text/advanced', // Correct Infobip API URL
   headers: {
-    'Authorization': 'App 590cec2efbdf7475ead7fc59cb28864f-689f957e-f691-40ec-8b86-bf51ecc34cfb', // Infobip API Key
+    'Authorization': `App ${process.env.INFOBIP_API_KEY}`, // Using environment variable for Infobip API Key
     'Content-Type': 'application/json',
     'Accept': 'application/json',
   }
@@ -63,7 +62,4 @@ app.post('/send-sms', async (req, res) => {
   }
 });
 
-// Start the server
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+module.exports = app;
