@@ -23,7 +23,7 @@ const infobipConfig = {
 };
 
 // SMS sending endpoint
-app.post('/send-sms', async (req, res) => {
+app.post('/server', async (req, res) => {
   const { to, message } = req.body;
 
   // Check if both "to" and "message" are provided
