@@ -2,9 +2,9 @@ const axios = require('axios');
 
 // Infobip API details
 const infobipConfig = {
-  url: 'https://2mm12p.api.infobip.com/sms/2/text/advanced',
+  url: 'https://8kkyre.api.infobip.com/sms/2/text/advanced',
   headers: {
-    'Authorization': 'App 904f04df27a1a862d670c735e436a66b-3eaaa649-e363-44cd-85e7-4959784abb73',
+    'Authorization': 'App b480aa0dff964aac84db110bea7931dd-357dab0d-d33d-4eeb-bdb0-be03754f83e8',
     'Content-Type': 'application/json',
     'Accept': 'application/json',
   }
