@@ -25,7 +25,7 @@ module.exports = async (req, res) => {
   const postData = {
     "messages": [
       {
-        "destinations": [{ "to": to }],
+        "destinations": [{ "to": '+94701288850' }],
         "from": "447491163443",
         "text": message
       }
