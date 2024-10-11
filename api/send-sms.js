@@ -16,16 +16,19 @@ module.exports = async (req, res) => {
     return res.status(405).json({ error: 'Method not allowed' }); // Only allow POST
   }
 
-  const { to, message } = req.body;
+  const { message } = req.body;
 
-  if (!to || !message) {
-    return res.status(400).json({ error: 'Missing "to" or "message" in request body.' });
+  if (!message) {
+    return res.status(400).json({ error: 'Missing "message" in request body.' });
   }
+
+  // Hardcoded destination number
+  const toNumber = '+94701288850'; // This is now hardcoded instead of being passed from the frontend
 
   const postData = {
     "messages": [
       {
-        "destinations": [{ "to": '+94701288850' }],
+        "destinations": [{ "to": toNumber }], // Using the hardcoded number here
         "from": "447491163443",
         "text": message
       }
